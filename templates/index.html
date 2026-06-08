@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FinControl</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <header class="main-header">
+        <h1>Kaucontrole</h1>
+        <p>Controle financeiro</p>
+    </header>
+
+    <div class="bento-grid">
+
+        <div class="grid-item card-principal saldo-card">
+            <span class="label-card color-purple">Saldo Atual</span>
+            <h1 id="saldo">R$ 0,00</h1>
+            <div class="glow-effect-purple"></div>
+        </div>
+
+        <div class="grid-item card-secundario salario-card">
+            <span class="label-card color-green">Salário Base</span>
+            <div class="salario-input-group">
+                <span class="currency">R$</span>
+                <input type="number" id="salario-inicial" placeholder="0,00" onchange="atualizarSalarioBase()">
+            </div>
+            <div class="glow-effect-green"></div>
+        </div>
+
+        <div class="grid-item card-quadrado chart-box">
+            <h2>Gastos</h2>
+            <div class="canvas-container">
+                <canvas id="grafico"></canvas>
+            </div>
+        </div>
+
+        <div class="grid-item card-alto form-box">
+            <h2>Nova Transação</h2>
+            <div class="form-inputs">
+                <input type="text" id="descricao" placeholder="Descrição">
+                <input type="number" id="valor" placeholder="Valor">
+                <input type="text" id="categoria" placeholder="Categoria">
+                
+                <div class="select-wrapper">
+                    <select id="tipo">
+                        <option value="receita">Ganho Financeiro (+)</option>
+                        <option value="despesa">Despesa (-)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="btn-action" onclick="adicionarTransacao()">
+                <span>Adicionar</span>
+                <span class="icon-plus">+</span>
+            </button>
+        </div>
+
+        <div class="grid-item card-largo extrato-box">
+            <h2>Extrato Recente</h2>
+            <div id="lista"></div>
+        </div>
+
+    </div>
+    
+</div>
+
+<script src="{{ url_for('static', filename='css/js/script.js') }}"></script>
+
+</body>
+</html>
