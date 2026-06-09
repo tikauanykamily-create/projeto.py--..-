@@ -53,10 +53,6 @@ def saldo():
     })
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
-
-
 @app.route("/api/transacoes/<int:id>", methods=["DELETE"])
 def excluir(id):
 
@@ -68,5 +64,9 @@ def excluir(id):
     financeiro.salvar(dados)
 
     return jsonify({
-        "mensagem":"Removido"
+        "mensagem": "Removido"
     })
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
